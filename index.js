@@ -46,10 +46,10 @@ onAuthStateChanged(auth, (user) => {
 
     // Redirect to index.html if on Wellcome.html or root path
     if (
-      window.location.pathname.endsWith("Wellcome.html") ||
+      window.location.pathname.toLowerCase() === "/wellcome" ||
       window.location.pathname === "/"
     ) {
-      window.location.href = "index.html";
+      window.location.href = "/index.html";
       return;
     }
 
