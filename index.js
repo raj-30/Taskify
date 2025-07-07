@@ -50,18 +50,7 @@ onAuthStateChanged(auth, (user) => {
         currentUser = null; // Clear user object on sign out
         // User is signed out
         console.log("User signed out");
-        if (document.body.classList.contains("logged-in")) {
-            document.body.classList.remove("logged-in");
-        }
-        if (!document.body.classList.contains("logged-out")) {
-            document.body.classList.add("logged-out");
-        }
-
-        if (userProfilePic) userProfilePic.style.display = "none";
-        if (userName) userName.style.display = "none";
-        if (signOutButton) signOutButton.style.display = "none";
-
-        if (window.location.pathname.includes("index.html")) {
+        if (window.location.pathname.endsWith("index.html") || window.location.pathname === "/") {
             window.location.href = "Wellcome.html";
         }
     }
