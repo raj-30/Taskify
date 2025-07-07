@@ -7,13 +7,13 @@ import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } from "https
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBLdmkBJCVxy9quJCIon1uE2wfCf59zTGo",
-  authDomain: "todoapp-da79d.firebaseapp.com",
-  databaseURL: "https://todoapp-da79d-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "todoapp-da79d",
-  storageBucket: "todoapp-da79d.firebasestorage.app",
-  messagingSenderId: "586995521004",
-  appId: "1:586995521004:web:d56760d60e03b7714edcc9"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
 // Initialize Firebase
