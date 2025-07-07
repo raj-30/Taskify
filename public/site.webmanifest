@@ -1,0 +1,29 @@
+{
+  "name": "Taskify-Task with Friends",
+  "short_name": "Taskify",
+  "description": "Collaborative to-do list app to manage tasks with friends.",
+  "orientation": "portrait",
+  "lang": "en",
+  "dir": "ltr",
+  "prefer_related_applications": false,
+  "categories": [
+    "productivity",
+    "collaboration",
+    "utilities"
+  ],
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#fbf7f5",
+  "background_color": "#fbf7f5",
+  "display": "standalone"
+}
