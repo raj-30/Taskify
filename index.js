@@ -30,6 +30,11 @@ onAuthStateChanged(auth, (user) => {
         console.log("User signed in:", user);
         if (userProfilePic) userProfilePic.src = user.photoURL;
         if (userName) userName.textContent = user.displayName;
+
+        
+        if (window.location.pathname.endsWith("Wellcome.html")) {
+            window.location.href = "/index.html";
+        }
         
         if (document.body.classList.contains("logged-out")) {
             document.body.classList.remove("logged-out");
