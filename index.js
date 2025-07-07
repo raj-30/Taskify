@@ -42,8 +42,8 @@ onAuthStateChanged(auth, (user) => {
         if (userName) userName.style.display = "inline-block";
         if (signOutButton) signOutButton.style.display = "inline-block";
 
-        if (window.location.pathname.includes("Wellcome.html")) {
-            window.location.href = "index.html";
+        if (window.location.pathname.endsWith("Wellcome.html")) {
+            window.location.href = "/index.html";
         }
         // ...
     } else {
