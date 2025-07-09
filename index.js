@@ -13,6 +13,7 @@ import {
   app,
 } from "./firebaseAuth.js";
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
+import { GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
 
 const appSettings = {
   databaseURL:
@@ -46,8 +47,8 @@ onAuthStateChanged(auth, (user) => {
 
     // Redirect to index.html if on Wellcome.html or root path
     if (
-      window.location.pathname.toLowerCase() === "/wellcome" ||
-      window.location.pathname === "/"
+      window.location.pathname.toLowerCase().includes("wellcome")
+      || window.location.pathname === "/"
     ) {
       window.location.href = "/index.html";
       return;
@@ -127,40 +128,46 @@ if (signOutButton) {
   });
 }
 
-inputFieldEl.addEventListener("keydown", function (event) {
-  if (event.key === "Enter") {
-    addButtonEl.click();
-  }
-});
+if (inputFieldEl && addButtonEl) {
+  inputFieldEl.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      addButtonEl.click();
+    }
+  });
+}
 
-deadlineFieldEl.addEventListener("keydown", function (event) {
-  if (event.key === "Enter") {
-    addButtonEl.click();
-  }
-});
+if (deadlineFieldEl && addButtonEl) {
+  deadlineFieldEl.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      addButtonEl.click();
+    }
+  });
+}
 
-addButtonEl.addEventListener("click", function () {
-  let inputValue = inputFieldEl.value.trim();
-  let deadlineValue = deadlineFieldEl.value;
+if (addButtonEl && inputFieldEl && deadlineFieldEl) {
+  addButtonEl.addEventListener("click", function () {
+    let inputValue = inputFieldEl.value.trim();
+    let deadlineValue = deadlineFieldEl.value;
 
-  if (inputValue === "" || !currentUser) {
-    // Optionally, alert the user if they are not signed in or input is empty
-    alert("Please sign in and enter a task!");
-    return;
-  }
+    if (inputValue === "" || !currentUser) {
+      // Optionally, alert the user if they are not signed in or input is empty
+      alert("Please sign in and enter a task!");
+      return;
+    }
 
-  const taskData = {
-    text: inputValue,
-    userId: currentUser.uid,
-    userName: currentUser.displayName || "Anonymous",
-    deadline: deadlineValue,
-    status: "pending", // Initial status
-  };
+    const taskData = {
+      text: inputValue,
+      userId: currentUser.uid,
+      userName: currentUser.displayName || "Anonymous",
+      deadline: deadlineValue,
+      status: "pending", // Initial status
+    };
 
-  push(shoppingListInDB, taskData);
-  clearInputFieldEl();
-  deadlineFieldEl.value = ""; // Clear the deadline field
-});
+    push(shoppingListInDB, taskData);
+    clearInputFieldEl();
+    deadlineFieldEl.value = ""; // Clear the deadline field
+  });
+}
 
 onValue(shoppingListInDB, function (snapshot) {
   if (snapshot.exists()) {
